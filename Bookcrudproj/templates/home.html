@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #d5bde2;  
+            margin: 0;
+            padding: 0;
+        }
+
+        center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #ba7fef;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #0d0b0b;
+            text-align: left;
+        }
+
+        th {
+            background-color: #8c4fdd;
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .delete-btn {
+            background-color: #a21607;
+            color: #fff;
+        }
+
+        .update-btn {
+            background-color: #067d36;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h2>Welcome to the Bookcrud Project</h2>
+        <button><a href="/addbook">Add Book</a></button>
+        <h2>Book Details</h2>
+        <table>
+            <tr>
+                <th>Book Id</th>
+                <th>Book Title</th>
+                <th>Book Author</th>
+                <th>Book Price</th>
+                <th>Actions</th>
+            </tr>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.price }}</td>
+                    <td>
+                        <a href="/delete/{{ book.id }}" class="delete-btn">Delete</a>
+                        <a href="/update/{{ book.id }}" class="update-btn">Update</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>
